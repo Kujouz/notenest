@@ -1,0 +1,82 @@
+/* =========================
+   Custom Indigo + Teal Theme
+   ========================= */
+
+/* Navbar */
+.navbar-custom {
+    background-color: #4B0082; /* Indigo */
+}
+.navbar-custom .nav-link,
+.navbar-custom .navbar-brand {
+    color: #fff !important;
+}
+.navbar-custom .nav-link:hover {
+    color: #20c997 !important; /* Teal hover */
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #20c997 !important; /* Teal */
+    border-color: #20c997 !important;
+}
+.btn-primary:hover {
+    background-color: #17a589 !important; /* Darker teal */
+    border-color: #17a589 !important;
+}
+.btn-outline-primary {
+    color: #20c997 !important;
+    border-color: #20c997 !important;
+}
+.btn-outline-primary:hover {
+    background-color: #20c997 !important;
+    color: #fff !important;
+}
+
+/* Links – apply only to body content, not navbars or dropdowns */
+main a {
+    color: #20c997;
+    text-decoration: none;
+}
+main a:hover {
+    color: #40e0d0;
+    text-decoration: underline;
+}
+
+/* Alerts */
+.alert-primary {
+    background-color: #20c997 !important;
+    border-color: #17a589 !important;
+    color: #fff !important;
+}
+
+/* Badges */
+.badge-primary {
+    background-color: #4B0082 !important; /* Indigo */
+}
+
+/* Cards */
+.card {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.card-header {
+    background-color: #4B0082 !important;
+    color: #fff !important;
+}
+
+/* Footer */
+.footer-custom {
+    background-color: #212529;
+    color: #ddd;
+}
+.footer-custom a {
+    color: #20c997;
+}
+.footer-custom a:hover {
+    color: #40e0d0;
+}
+
+/* Indigo card header utility */
+.bg-indigo {
+    background-color: #4B0082 !important;
+}
