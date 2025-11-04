@@ -183,7 +183,7 @@
         style="background: linear-gradient(135deg, #2f307f, #dd3226); box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
         <div class="container">
             <!-- Logo -->
-            <a class="navbar-brand d-flex align-items-center gap-2" href="{{ route('dashboard') }}">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="{{ route('landing') }}">
                 <img src="{{ asset('images/notenest.png') }}" alt="Note-Nest Logo" height="45">
                 <span class="fw-bold">Note-Nest</span>
             </a>
