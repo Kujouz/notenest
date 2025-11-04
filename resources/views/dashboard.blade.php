@@ -292,7 +292,7 @@
 
     <div class="container main-container mt-4">
         <div class="page-header">
-            <h3 class="welcome-title m-0">Welcome to Note-Nest 🎓</h3>
+            <h3 class="welcome-title m-0">Welcome to Note-Nests 🎓</h3>
             <div class="center-logo">
                 <img src="{{ asset('images/GMMS_LOGO.png') }}" alt="GIATMARA Logo" class="header-logo"
                     style="height: 120px;">
