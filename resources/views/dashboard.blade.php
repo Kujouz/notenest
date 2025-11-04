@@ -565,6 +565,27 @@
                 myModal.show();
             }
 
+            function openUploadModal(folderId) {
+                document.getElementById('currentFolderId').value = folderId;
+                var modal = new bootstrap.Modal(document.getElementById('uploadNoteModal'));
+                modal.show();
+            }
+
+            // Add this event listener to handle all "Add Note" buttons
+            document.addEventListener('DOMContentLoaded', function () {
+                // Handle Add Note button clicks using event delegation
+                document.addEventListener('click', function (e) {
+                    if (e.target.classList.contains('add-note-btn')) {
+                        const folderId = e.target.getAttribute('data-folder-id');
+                        console.log('Opening modal for folder:', folderId);
+
+                        document.getElementById('currentFolderId').value = folderId;
+                        var modal = new bootstrap.Modal(document.getElementById('uploadNoteModal'));
+                        modal.show();
+                    }
+                });
+            });
+
             /* ======= Search ======= */
             document.getElementById('searchInput').addEventListener('input', function () {
                 const q = this.value.trim().toLowerCase();
@@ -599,12 +620,12 @@
 
                 // Show loading state
                 previewContent.innerHTML = `
-            <div class="text-center">
-                <div class="spinner-border" role="status">
-                    <span class="visually-hidden">Loading...</span>
+                <div class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
                 </div>
-            </div>
-        `;
+            `;
 
                 // Show modal
                 modal.show();
@@ -633,26 +654,26 @@
                     }
                     else {
                         previewContent.innerHTML = `
-                    <div class="alert alert-info">
-                        <h6><i class="fas fa-info-circle"></i> Preview Not Available</h6>
-                        <p>This file type (${fileType}) cannot be previewed directly.</p>
-                        <a href="${fileUrl}" class="btn btn-primary" download>
-                            <i class="fas fa-download me-1"></i>Download to View
-                        </a>
-                    </div>
-                `;
+                        <div class="alert alert-info">
+                            <h6><i class="fas fa-info-circle"></i> Preview Not Available</h6>
+                            <p>This file type (${fileType}) cannot be previewed directly.</p>
+                            <a href="${fileUrl}" class="btn btn-primary" download>
+                                <i class="fas fa-download me-1"></i>Download to View
+                            </a>
+                        </div>
+                    `;
                     }
                 } catch (error) {
                     console.error('Preview Error:', error);
                     previewContent.innerHTML = `
-                <div class="alert alert-danger">
-                    <h6><i class="fas fa-exclamation-triangle"></i> Preview Error</h6>
-                    <p>There was an error previewing this file. Please try downloading it instead.</p>
-                    <a href="${fileUrl}" class="btn btn-primary" download>
-                        <i class="fas fa-download me-1"></i>Download
-                    </a>
-                </div>
-            `;
+                    <div class="alert alert-danger">
+                        <h6><i class="fas fa-exclamation-triangle"></i> Preview Error</h6>
+                        <p>There was an error previewing this file. Please try downloading it instead.</p>
+                        <a href="${fileUrl}" class="btn btn-primary" download>
+                            <i class="fas fa-download me-1"></i>Download
+                        </a>
+                    </div>
+                `;
                 }
             }
         </script>

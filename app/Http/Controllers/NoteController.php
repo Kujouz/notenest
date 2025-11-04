@@ -47,7 +47,7 @@ class NoteController extends Controller
             'course_code' => 'required|string|max:20',
             'description' => 'required|string|max:500',
             'category' => 'nullable|string|max:50',
-            'file' => 'required|file|mimes:pdf,doc,docx,ppt,pptx,png,jpg,jpeg,gif,zip,rar,txt|max:10240',
+            'file' => 'required|file|mimes:pdf,doc,docx,ppt,pptx,png,jpg,jpeg,gif,zip,rar,txt|max:15360',
         ]);
 
         $file = $request->file('file');
