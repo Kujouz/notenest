@@ -8,10 +8,11 @@ use App\Http\Controllers\FolderController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\HelpCenterController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\AdminController;
 use App\Models\Folder;
 
 Auth::routes();
@@ -36,6 +37,7 @@ Route::get('/dashboard', function () {
 
 /* ---------- AUTHENTICATED ROUTES -- */
 Route::middleware(['auth'])->group(function () {
+    // Note routes
     Route::get('/dashboard', [NoteController::class, 'index'])->name('dashboard');
     Route::get('/notes/{note}/download', [NoteController::class, 'download'])->name('notes.download');
     // Quiz taking route (for students)
@@ -83,15 +85,25 @@ Route::middleware(['auth'])->group(function () {
 // Admin routes (only for admin users)
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    // User Management routes
     Route::get('/users', [AdminController::class, 'users'])->name('users');
     Route::get('/users/create', [AdminController::class, 'createUser'])->name('users.create');
+    Route::post('/users', [AdminController::class, 'storeUser'])->name('users.store');
+    Route::delete('/users/{user}', [AdminController::class, 'deleteUser'])->name('users.destroy');
+    // Note Management routes
     Route::get('/notes', [AdminController::class, 'notes'])->name('notes');
     Route::get('/notes/create', [AdminController::class, 'createNote'])->name('notes.create');
-    Route::get('/reports', [AdminController::class, 'reports'])->name('reports');
+    Route::post('/notes', [AdminController::class, 'storeNote'])->name('notes.store');
+    Route::delete('/notes/{id}', [AdminController::class, 'deleteNote'])->name('notes.delete');
+    // Folder Management routes
+    Route::get('/folders', [AdminController::class, 'folders'])->name('folders');
+    Route::post('/folders', [AdminController::class, 'storeFolder'])->name('folders.store');
+    Route::delete('/folders/{id}', [AdminController::class, 'destroyFolder'])->name('folders.destroy');
 
-    Route::post('/notes/{note}/approve', [AdminController::class, 'approveNote'])->name('notes.approve');
-    Route::delete('/notes/{note}', [AdminController::class, 'rejectNote'])->name('notes.reject');
-    Route::delete('/users/{user}', [AdminController::class, 'deleteUser'])->name('users.delete');
+    Route::get('/reports', [AdminController::class, 'reports'])->name('reports');
+    Route::get('/reports/users', [ReportController::class, 'generateUserReport'])->name('reports.users');
+    Route::get('/reports/activity', [ReportController::class, 'generateActivityReport'])->name('reports.activity');
+    Route::get('/reports/download', [ReportController::class, 'downloadReport'])->name('reports.download');
 });
 
 // Help Center routes

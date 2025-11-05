@@ -34,7 +34,7 @@ class LoginController extends Controller
         $user = Auth::user();
 
         if ($user->role === 'admin') {
-            return '/admin'; // ✅ Admin dashboard
+            return '/admin/dashboard'; // ✅ Admin dashboard
         } elseif ($user->role === 'teacher') {
             return '/dashboard'; // ✅ Teacher page
         } else {

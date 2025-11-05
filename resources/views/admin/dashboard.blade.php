@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <style>
@@ -241,25 +241,6 @@
     }
 </style>
 
-<div class="admin-header d-flex justify-content-between align-items-center">
-    <h4 class="d-flex align-items-center">
-        <img src="{{ asset('images/notenest.png') }}" alt="Note-Nest Logo"
-             style="height:40px; width:auto; border-radius:8px; margin-right:10px;">
-        Note-Nest Admin
-    </h4>
-    <ul class="nav d-none d-md-flex">
-        <li class="nav-item"><a class="nav-link active" href="{{ route('admin.dashboard') }}"><i class="fas fa-tachometer-alt me-1"></i> Dashboard</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ route('admin.users') }}"><i class="fas fa-users me-1"></i> Users</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ route('admin.notes') }}"><i class="fas fa-file-alt me-1"></i> Notes</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ route('admin.reports') }}"><i class="fas fa-chart-bar me-1"></i> Reports</a></li>
-    </ul>
-    <form method="POST" action="{{ route('logout') }}">
-        @csrf
-        <button type="submit" class="btn btn-light btn-sm">
-            <i class="fas fa-sign-out-alt me-1"></i> Logout
-        </button>
-    </form>
-</div>
 
 <div class="container-fluid">
     <div class="row">
@@ -268,7 +249,6 @@
             <h6><i class="fas fa-bolt me-2"></i>Quick Actions</h6>
             <a href="{{ route('admin.users.create') }}"><i class="fas fa-user-plus"></i>Add New User</a>
             <a href="{{ route('admin.notes.create') }}"><i class="fas fa-file-upload"></i>Create Note</a>
-            <a href="#"><i class="fas fa-cog"></i>System Logs</a>
             <a href="{{ route('admin.reports') }}"><i class="fas fa-chart-bar"></i>View Reports</a>
         </div>
 
@@ -348,7 +328,7 @@
                     <div class="management-card">
                         <h5><i class="fas fa-chart-bar me-2"></i>Reports & Analytics</h5>
                         <p>Track platform activity, generate insights, and download comprehensive reports.</p>
-                        <a href="{{ route('admin.reports') }}" class="btn btn-warning btn-sm mt-2">
+                        <a href="#" class="btn btn-warning btn-sm mt-2">
                             <i class="fas fa-download me-1"></i> View Reports
                         </a>
                     </div>
@@ -374,6 +354,7 @@
                     </div>
                 </div>
             </div>
+
 
 <script>
     document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', {
