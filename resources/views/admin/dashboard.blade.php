@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 @section('content')
 <style>
@@ -328,7 +328,7 @@
                     <div class="management-card">
                         <h5><i class="fas fa-chart-bar me-2"></i>Reports & Analytics</h5>
                         <p>Track platform activity, generate insights, and download comprehensive reports.</p>
-                        <a href="#" class="btn btn-warning btn-sm mt-2">
+                        <a href="{{ route('admin.reports') }}" class="btn btn-warning btn-sm mt-2">
                             <i class="fas fa-download me-1"></i> View Reports
                         </a>
                     </div>
