@@ -165,7 +165,7 @@ class AdminController extends Controller
     /**
      * Delete a user
      */
-    public function destroyUser(User $user)
+    public function deleteUser(User $user)
     {
         $user->delete();
         return redirect()->route('admin.users')->with('success', 'User deleted successfully!');
